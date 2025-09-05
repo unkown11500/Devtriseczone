@@ -12,10 +12,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-// Serve static files from 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rate limiting for API routes
 app.use('/api/', rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100
@@ -381,7 +379,7 @@ app.post('/api/admin/cleanup', async (req, res) => {
     }
 });
 
-// Serve main directory files explicitly
+// Serve main directory files
 app.get('/main/:page', (req, res) => {
     const page = req.params.page;
     res.sendFile(path.join(__dirname, 'public', 'main', page), (err) => {
@@ -392,7 +390,17 @@ app.get('/main/:page', (req, res) => {
     });
 });
 
-// Fallback to serve index.html for root
+// Serve about.html
+app.get('/about.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'about.html'), (err) => {
+        if (err) {
+            console.error('Error serving /about.html:', err);
+            res.status(404).send('Page not found');
+        }
+    });
+});
+
+// Serve index.html for root
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
