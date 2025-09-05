@@ -12,8 +12,10 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname)));
+// Serve static files from 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Rate limiting for API routes
 app.use('/api/', rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100
@@ -377,6 +379,22 @@ app.post('/api/admin/cleanup', async (req, res) => {
         console.error('Error cleaning up old data:', error);
         res.status(500).json({ error: 'Server error' });
     }
+});
+
+// Serve main directory files explicitly
+app.get('/main/:page', (req, res) => {
+    const page = req.params.page;
+    res.sendFile(path.join(__dirname, 'public', 'main', page), (err) => {
+        if (err) {
+            console.error(`Error serving /main/${page}:`, err);
+            res.status(404).send('Page not found');
+        }
+    });
+});
+
+// Fallback to serve index.html for root
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 initializeDatabase().then(() => {
