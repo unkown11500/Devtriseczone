@@ -41,8 +41,6 @@ html {
     box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid var(--bg-color-lighter);
     position: fixed;
-    margin-top: -80px;
-    margin-left: -25px;
     width: 100%;
     z-index: 1000;
 }
@@ -205,6 +203,7 @@ html {
 .admin-panel {
     display: none;
     padding-top: 0;
+    margin-top: 40px;
     scroll-margin-top: 10rem;
 }
 
@@ -528,6 +527,7 @@ canvas {
     padding: 1.2rem 2.4rem;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     text-align: center;
+    margin-top: 50px;
 }
 
 .admin-footer p {
