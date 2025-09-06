@@ -927,10 +927,11 @@ section p.text-center {
 }
 
 .review-card {
-    background-color: #fff;
+    background-color: var(--card-bg);
     padding: 2rem;
+    border: 3px solid #007bff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px #007bff;
     text-align: center;
     transition: var(--transition);
     min-height: 200px;
@@ -955,12 +956,12 @@ section p.text-center {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #333;
+    color: #fff;
 }
 
 .review-card p {
     font-size: 1rem;
-    color: #666;
+    color: #fff;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -971,7 +972,7 @@ section p.text-center {
 
 .review-card p:hover {
     cursor: pointer;
-    color: var(--primary-color);
+    color: fff;
 }
 
 
