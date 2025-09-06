@@ -931,7 +931,6 @@ section p.text-center {
     padding: 2rem;
     border: 3px solid #007bff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px #007bff;
     text-align: center;
     transition: var(--transition);
     min-height: 200px;
@@ -941,10 +940,6 @@ section p.text-center {
     justify-content: center;
 }
 
-.review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
 
 .review-icon {
     font-size: 3rem;
